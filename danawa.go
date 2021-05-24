@@ -8,7 +8,7 @@ const jsParseDanawaPrices = `
 		el.nodeType === 3 || el.nodeType === 4
 		? el.nodeValue.trim()
 		: el.nodeType === 1 && el.tagName.toLowerCase() === 'img'
-		? el.getAttribute('alt').trim() || ''
+		? (el.getAttribute('alt') || '').trim()
 		: el.nodeType === 1
 		? Array.from(el.childNodes).map(child => getElementText(child)).join('')
 		: ''
