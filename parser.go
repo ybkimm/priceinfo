@@ -13,9 +13,7 @@ type ParseFunc func(out *[]PriceInfo) chromedp.Action
 var parserMap = map[string]ParseFunc{}
 
 func CrawPage(href string, opts ...chromedp.ExecAllocatorOption) ([]PriceInfo, error) {
-	if opts == nil {
-		opts = chromedp.DefaultExecAllocatorOptions[:]
-	}
+	opts = append(opts, chromedp.DefaultExecAllocatorOptions[:]...)
 
 	u, err := url.Parse(href)
 	if err != nil {
